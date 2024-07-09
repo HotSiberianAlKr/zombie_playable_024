@@ -71,7 +71,6 @@
             height: 100%;
             background-color: #ffffff00;
             display: none;
-            overflow: hidden;
             z-index: 999;
         }
 
@@ -163,7 +162,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 998;
             color: #fff;
         }
 
@@ -400,9 +399,8 @@
         const bottomSequenceContainer = document.getElementById('bottomSequence');
         const waterImage = document.getElementById('waterImage');
         const injectorImage = document.getElementById('injectorIcon');
-        const overlayContainer = document.getElementById('overlayContainer');
+        const overlayContainer = document.getElementById('shapeOverlay');
         const hand = document.getElementById('hand');
-        overlayContainer.visible = false;
 
         function init() {
             // Scene setup
@@ -544,6 +542,7 @@
             console.log("clicks: " + clickCounter);
             if (clickCounter >= 3) {
                 showOverlay();
+                
             }
         }
 
@@ -638,10 +637,11 @@
 
         // Functions to show and hide the overlay
         function showOverlay() {
-            overlayContainer.visible = true;
+            overlayContainer.style.display = 'block'
+            overlayContainer.addEventListener('click', overlayClicked)
         }
 
-        overlayContainer.addEventListener('click', overlayClicked)
+       
         // Function to handle overlay click
         function overlayClicked() {
             CTA.onClick();
