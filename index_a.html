@@ -47,7 +47,7 @@
             }
         });
 
-       
+        
 
     </script>
     <title>Zombie hospital playable ad</title>
@@ -812,24 +812,7 @@
         }
 
         // Start the initialization
-        function viewableChangeHandler(viewable) {
-            // start/pause/resume gameplay, stop/play sounds
-                if(viewable) {
-                    init();
-                    Howler.mute(false)
-                } else {
-                // pause
-                    mraid.unload()
-                    Howler.mute(true)
-                }
-            }
-            function onSdkReady() {
-                mraid.addEventListener('viewableChange', viewableChangeHandler);
-                // Wait for the ad to become viewable for the first time
-                if (mraid.isViewable()) {
-                    init();
-                }
-            }
+         document.addEventListener("DOMContentLoaded", init)
         document.addEventListener('click', function () {
             pl();
         })
